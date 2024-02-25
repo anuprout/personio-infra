@@ -6,7 +6,6 @@ Sample code that provisions an EKS cluster and an ECR using Terraform. Below is 
 
 ## Prerequisites
 - a [Terraform Cloud account](https://app.terraform.io/signup/account?utm_source=learn) and organization.
-- a [Terraform Cloud variable set configured with your AWS credentials](https://developer.hashicorp.com/terraform/tutorials/cloud-get-started/cloud-create-variable-set).
 - an [AWS account](https://portal.aws.amazon.com/billing/signup?nc2=h_ct&src=default&redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start)
 
 ## Set up
@@ -43,13 +42,15 @@ tree ./terraform
 │       ├── terraform.tf
 │       └── variables.tf
 └── modules                                 // local terraform modules that may be shared across environments
-    └── sample_go_app                       // application module (to be customized for any given application)
-        ├── datasources.tf                  
-        ├── eks.tf                          // TF code to build an EKS cluster and other required AWS resources
-        ├── outputs.tf               
+    └── default_setup                       // application deault module to create default AWS resources such as an EKS cluster
+    |   ├── datasources.tf                  
+    |   ├── eks.tf                          // TF code to build an EKS cluster and other required AWS resources
+    |   ├── outputs.tf               
+    |   └── variables.tf
+    └── sample_go_app
+        ├── ecr.tf                          // TF code to build an ECR repository for the app                   
         └── variables.tf
+
    
 ```
 
-## Improvements
-- Create a separate TF module and add it to an artifact registry.
