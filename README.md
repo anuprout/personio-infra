@@ -2,7 +2,7 @@
 
 Sample code that provisions an EKS cluster and an ECR using Terraform. Below is the high level deployment flow.
 
-![cicd.jpg](cicd.jpg)
+![cicd.jpg](img/cicd.jpg)
 
 ## Prerequisites
 - a [Terraform Cloud account](https://app.terraform.io/signup/account?utm_source=learn) and organization.
@@ -14,17 +14,17 @@ The GitHub Action will connect to Terraform Cloud to plan and apply the configur
 
 - On TF cloud, go to the `Create a new Workspace page` and select `API-driven workflow`.
 
-  ![new_wf.jpg](new_wf.jpg)
+  ![new_wf.jpg](img/new_wf.jpg)
 
   Add the following as Environment Variables for your workspace.
 
-  ![add_tf_var.jpg](add_tf_var.jpg)
+  ![add_tf_var.jpg](img/add_tf_var.jpg)
   > **Note:**
   > - The AWS credential used above must have all required IAM permissions to create the resources.
   > - Create a separate workspace for each environment defined under `environments` dir.
 
   For each workspace, set the `Terraform Working Directory` pointing to the corresponding `environments` dir. This is important to trigger the TF plan & apply using the correct TF files for an environment. 
-  ![tf_wrk_dir.jpg](tf_wrk_dir.jpg)
+  ![tf_wrk_dir.jpg](img/tf_wrk_dir.jpg)
   
 - Go to the [Tokens page](https://app.terraform.io/app/settings/tokens?utm_source=learn) in your Terraform Cloud User Settings. Click on Create an API token, enter GitHub Actions for the Description, then click Generate token.
 - Set a Github Actions secret `TF_API_TOKEN` with above TF token. This will be used by the Github workflow to access TF cloud API.
