@@ -49,9 +49,7 @@ tree ./terraform
         ├── outputs.tf               
         └── variables.tf
    
-
-8 directories, 52 files
 ```
 
 ## Improvements
-- Create a separate TF module and it to the artifact registry.
+- Create a separate TF module and add it to an artifact registry.
