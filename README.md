@@ -1,6 +1,6 @@
 # personio-infra
 
-Sample code that provisions an EKS cluster and an ECR using Terraform. Below is the high level deployment flow.
+Sample Terraform code that provisions an EKS cluster and an ECR using Terraform. Below is the high level deployment flow.
 
 ![cicd.jpg](img/cicd.jpg)
 
@@ -29,8 +29,7 @@ The GitHub Action will connect to Terraform Cloud to plan and apply the configur
 - Set a Github Actions secret `TF_API_TOKEN` with above TF token. This will be used by the Github workflow to access TF cloud API.
 
 ## Terraform Code Layout
-``` 
-tree ./terraform 
+```
 ./                                          // top level directory for all terraform code
 ├── environments                            // directory for env specific configurations
 │   ├── dev                                 // terraform configuration for dev environment
