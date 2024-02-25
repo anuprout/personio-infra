@@ -67,7 +67,7 @@ module "eks" {
     terraform   = "true"
   }
 }
-*/
+
 
 //create an IAM role to be used by the EBS CSI driver
 // ref: https://github.com/terraform-aws-modules/terraform-aws-iam/tree/v5.34.0/modules/iam-assumable-role-with-oidc
@@ -82,7 +82,7 @@ module "irsa-ebs-csi" {
   oidc_fully_qualified_subjects = ["system:serviceaccount:kube-system:ebs-csi-controller-sa"]
 }
 
-/*
+
 //EKS EBS CSI driver addon
 resource "aws_eks_addon" "ebs-csi" {
   cluster_name             = module.eks.cluster_name
