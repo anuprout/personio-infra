@@ -32,7 +32,6 @@ module "vpc" {
 
 //crate the EKS cluster
 // ref: https://github.com/terraform-aws-modules/terraform-aws-eks
-/*
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "19.15.3"
@@ -94,7 +93,7 @@ resource "aws_eks_addon" "ebs-csi" {
     "terraform" = "true"
   }
 }
-*/
+
 
 //create an ECR
 resource "aws_ecr_repository" "ecr-personio" {
