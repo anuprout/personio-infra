@@ -32,6 +32,7 @@ module "vpc" {
 
 //crate the EKS cluster
 // ref: https://github.com/terraform-aws-modules/terraform-aws-eks
+/*
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "19.15.3"
@@ -66,6 +67,7 @@ module "eks" {
     terraform   = "true"
   }
 }
+*/
 
 //create an IAM role to be used by the EBS CSI driver
 // ref: https://github.com/terraform-aws-modules/terraform-aws-iam/tree/v5.34.0/modules/iam-assumable-role-with-oidc
@@ -80,6 +82,7 @@ module "irsa-ebs-csi" {
   oidc_fully_qualified_subjects = ["system:serviceaccount:kube-system:ebs-csi-controller-sa"]
 }
 
+/*
 //EKS EBS CSI driver addon
 resource "aws_eks_addon" "ebs-csi" {
   cluster_name             = module.eks.cluster_name
@@ -89,5 +92,16 @@ resource "aws_eks_addon" "ebs-csi" {
   tags = {
     "eks_addon" = "ebs-csi"
     "terraform" = "true"
+  }
+}
+*/
+
+//create an ECR
+resource "aws_ecr_repository" "ecr-personio" {
+  name                 = "personio"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
   }
 }
